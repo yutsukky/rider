@@ -11,6 +11,7 @@ public class SearchApplication {
     public static void main(String[] arg) {
         //練習パート
         /*
+        //テストテスト
         Iterator<String> sourceIterator = Arrays.asList("A", "B", "C").iterator();
         System.out.println(sourceIterator.getClass().getSimpleName());
         Stream<String> targetStream = StreamSupport.stream(
