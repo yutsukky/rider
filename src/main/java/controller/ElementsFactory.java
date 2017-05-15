@@ -1,5 +1,9 @@
 package controller;
 
+import fornews.Nothing;
+import forshape.BirthDay;
+import forshape.ForShapeIF;
+import forshape.NoShaping;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -17,20 +21,22 @@ import java.util.stream.Stream;
  */
 public class ElementsFactory {
     public String getElements(Elements th, Elements td){
-        String shaped_td = td.text().replaceAll("\\[[0-9]+]","");
-        if ( th.text().equals("生年月日") ){
-            LocalDate birth_day;
-            birth_day = LocalDate.parse(td.select("span[class=bday]").text());
-            String year = String.valueOf(birth_day.getYear());
-            String month = String.valueOf(birth_day.getMonthValue());
-            String day = String.valueOf(birth_day.getDayOfMonth());
-            Integer age = Period.between(birth_day,LocalDate.now()).getYears();
-            shaped_td = year + "年" + month + "月" + day + "日" + "(" + age + "歳)";
-        }
-        return shaped_td;
+        return Stream.of(shapeElements.values())
+                .filter( v -> v.type.equals(th.text()))
+                .findFirst().map(v -> v.factory)
+                .orElse(new NoShaping())
+                .getElements(td);
     }
 
     enum shapeElements {
-        //bday("生年月日",);
+        bday("生年月日",new BirthDay());
+
+        final String type;
+        final ForShapeIF factory;
+
+        shapeElements(String type, ForShapeIF factory){
+            this.type = type;
+            this.factory = factory;
+        }
     }
 }
