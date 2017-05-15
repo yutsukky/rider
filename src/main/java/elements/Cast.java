@@ -1,18 +1,12 @@
 package elements;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by yuta_tsukioka on 2017/05/09.
- */
 public class Cast {
-    private Integer id;
-    private String name;
+    private final Integer id;
+    private final String name;
 
-    public Cast(Integer i, String n){
-        id = i;
-        name = n;
+    public Cast(Integer id, String name){
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId(){

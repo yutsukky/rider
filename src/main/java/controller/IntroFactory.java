@@ -10,9 +10,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Created by yuta_tsukioka on 2017/04/27.
- */
 public class IntroFactory {
 
     public List<Intro> getIntro(Stream<Element> tr_info){
@@ -35,7 +32,6 @@ public class IntroFactory {
     }
 
     public List<String> getOtherTitles(Stream<Element> titles){
-        Output.normalText("[主な出演作]");
         List<String> list = new ArrayList<>();
         titles.forEach(
                 v -> {

@@ -1,17 +1,14 @@
 package elements;
 
-/**
- * Created by yuta_tsukioka on 2017/05/12.
- */
 public class News {
     private String day;
     private String title;
     private String detail;
 
-    public News(String da, String t,String de){
-        day = da;
-        title = t;
-        detail = de;
+    public News(String day, String title,String detail){
+        this.day = day;
+        this.title = title;
+        this.detail = detail;
     }
 
     public String getDay(){

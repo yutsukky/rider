@@ -1,18 +1,12 @@
 package elements;
 
-import java.util.HashMap;
-
-/**
- * Created by yuta_tsukioka on 2017/05/09.
- */
 public class Title {
-    private Integer id;
-    private String title;
-    private HashMap<Integer, String> title_hash = new HashMap<>();
+    private final Integer id;
+    private final String title;
 
-    public Title(Integer i, String t){
-        id = i;
-        title = t;
+    public Title(Integer id, String title){
+        this.id = id;
+        this.title = title;
     }
 
     public Integer getId(){

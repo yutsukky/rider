@@ -4,9 +4,6 @@ import elements.News;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by yuta_tsukioka on 2017/05/12.
- */
 public class Nothing implements ForNewsIF {
     @Override
     public List<News> getNewsList(){

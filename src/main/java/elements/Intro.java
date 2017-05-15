@@ -1,15 +1,12 @@
 package elements;
 
-/**
- * Created by yuta_tsukioka on 2017/05/09.
- */
 public class Intro {
     private String subject;
     private String object;
 
-    public Intro(String s,String o){
-        subject = s;
-        object = o;
+    public Intro(String subject,String object){
+        this.subject = subject;
+        this.object = object;
     }
 
     public String getSubject(){ return subject; }

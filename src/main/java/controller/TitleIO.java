@@ -1,19 +1,10 @@
 package controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import elements.Title;
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Stream;
 
-/**
- * Created by yuta_tsukioka on 2017/04/24.
- */
-public class TitleOut
+public class TitleIO
 {
     public String setTitles() throws IOException {
 
@@ -23,7 +14,7 @@ public class TitleOut
 
         titleList.stream().forEach(Output::titleText);
 
-        String str = Output.enterText("上記のタイトル番号のいずれかを指定してください.");
+        String str = Input.enterText("上記のタイトル番号のいずれかを指定してください.");
 
         String selectTitle = titleList.stream()
                 .filter(v -> v.getId().equals(Integer.parseInt(str)))

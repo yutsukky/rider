@@ -4,14 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import elements.Cast;
 import elements.Title;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by yuta_tsukioka on 2017/05/09.
- */
 public class JsonToEntity {
     public static List<Title> toTitle(String s) {
         List<Title> titleList = new ArrayList<>();

@@ -8,9 +8,6 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by yuta_tsukioka on 2017/05/12.
- */
 public class MasakiSuda implements ForNewsIF {
     @Override
     public List<News> getNewsList(){

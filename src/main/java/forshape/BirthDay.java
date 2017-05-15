@@ -1,13 +1,9 @@
 package forshape;
 
 import org.jsoup.select.Elements;
-
 import java.time.LocalDate;
 import java.time.Period;
 
-/**
- * Created by yuta_tsukioka on 2017/05/12.
- */
 public class BirthDay implements ForShapeIF {
     @Override
     public String getElements(Elements td){

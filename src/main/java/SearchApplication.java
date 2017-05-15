@@ -1,13 +1,10 @@
-import controller.CastOut;
+import controller.CastIO;
 import controller.InfoOut;
 import controller.NewsOut;
-import controller.TitleOut;
+import controller.TitleIO;
 import java.io.IOException;
 import java.util.Optional;
 
-/**
- * Created by yuta_tsukioka on 2017/04/24.
- */
 public class SearchApplication {
     public static void main(String[] arg) {
         //練習パート
@@ -16,9 +13,9 @@ public class SearchApplication {
         //練習パートここまで
         String selectTitle,selectCast;
         try {
-            selectTitle = new TitleOut().setTitles();
+            selectTitle = new TitleIO().setTitles();
             try {
-                selectCast = new CastOut().setCasts(selectTitle);
+                selectCast = new CastIO().setCasts(selectTitle);
                 try {
                     new InfoOut().getInfo(selectCast);
                     new NewsOut().getNews(selectCast);
