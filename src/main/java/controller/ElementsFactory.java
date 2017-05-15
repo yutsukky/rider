@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 /**
  * Created by yuta_tsukioka on 2017/04/27.
  */
-public class ShapeElements {
+public class ElementsFactory {
     public String getElements(Elements th, Elements td){
         String shaped_td = td.text().replaceAll("\\[[0-9]+]","");
         if ( th.text().equals("生年月日") ){
@@ -28,5 +28,9 @@ public class ShapeElements {
             shaped_td = year + "年" + month + "月" + day + "日" + "(" + age + "歳)";
         }
         return shaped_td;
+    }
+
+    enum shapeElements {
+        //bday("生年月日",);
     }
 }

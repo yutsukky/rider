@@ -3,58 +3,36 @@ package controller;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import elements.Cast;
+import elements.Title;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by yuta_tsukioka on 2017/04/25.
  */
 public class CastOut {
-    public String setCasts(String title) throws IOException
-    {
-        JsonNode root;
-        HashMap<Integer, String> cast_hash = new HashMap<>();
+    public String setCasts(String title) throws IOException {
+        List<Cast> castList;
 
-        try
-        {
-            ObjectMapper mapper = new ObjectMapper();
-            root = mapper.readTree(new File("json/obog.json"));
+        castList = JsonToEntity.toCast("Casts",title);
 
-            for (JsonNode n : root.get("Casts")) {
+        castList.stream().forEach(Output::castText);
 
-                ArrayNode a = (ArrayNode) n.get("Title");
-                a.iterator().forEachRemaining(
-                        v -> {
-                            if( v.asText().equals(title) ){
-                                int id = n.get("Id").asInt();
-                                String name = n.get("Name").asText();
-                                System.out.println("ID:" + id + " " + name);
-                                cast_hash.put( id, name);
-                            }
-                        }
-                );
-            }
-        }
-        catch(FileNotFoundException fe)
-        {
-            fe.printStackTrace();
-            System.out.println("キャスト情報が読み込めませんでした.");
-            System.exit(1);
-        }
+        String str = Output.enterText("上記のキャスト番号を選択してください.");
 
-        InputStreamReader is = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(is);
+        String selectName = castList.stream()
+                .filter(v -> v.getId().equals(Integer.parseInt(str)))
+                .map(v -> v.getName())
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Error"));
 
-        System.out.println("上記のキャスト番号を選択してください.");
+        Output.normalText( selectName + "さんが選択されました.");
 
-        String str = br.readLine();
-
-        String cast = cast_hash.get(Integer.parseInt(str));
-        System.out.println( cast + "さんが選択されました.");
-
-        return cast;
+        return selectName;
     }
 }

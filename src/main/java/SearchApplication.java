@@ -3,6 +3,7 @@ import controller.InfoOut;
 import controller.NewsOut;
 import controller.TitleOut;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by yuta_tsukioka on 2017/04/24.
@@ -10,24 +11,17 @@ import java.io.IOException;
 public class SearchApplication {
     public static void main(String[] arg) {
         //練習パート
-        /*
-        //テストテスト
-        Iterator<String> sourceIterator = Arrays.asList("A", "B", "C").iterator();
-        System.out.println(sourceIterator.getClass().getSimpleName());
-        Stream<String> targetStream = StreamSupport.stream(
-                Spliterators.spliteratorUnknownSize(sourceIterator, Spliterator.ORDERED),
-                false);
-        targetStream.filter(v -> v.contains("B")).map(v -> "p"+v).forEach(v -> System.out.println(v));
-        */
+        //System.out.println(hoge(Optional.of("aiueo")));
+        //System.out.println(hoge(Optional.empty()));
         //練習パートここまで
-        String title,cast;
+        String selectTitle,selectCast;
         try {
-            title = new TitleOut().setTitles();
+            selectTitle = new TitleOut().setTitles();
             try {
-                cast = new CastOut().setCasts(title);
+                selectCast = new CastOut().setCasts(selectTitle);
                 try {
-                    new InfoOut().getInfo(cast);
-                    new NewsOut().getNews(cast);
+                    new InfoOut().getInfo(selectCast);
+                    new NewsOut().getNews(selectCast);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -37,5 +31,9 @@ public class SearchApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String hoge(Optional<String> text) {
+        return text.orElse("ヌルヌル");
     }
 }

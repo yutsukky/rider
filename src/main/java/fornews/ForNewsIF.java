@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by yuta_tsukioka on 2017/05/12.
  */
-public interface NewsListOneFactory {
+public interface ForNewsIF {
     List<News> getNewsList();
 }

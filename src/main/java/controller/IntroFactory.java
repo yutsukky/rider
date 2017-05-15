@@ -1,12 +1,9 @@
 package controller;
 
-import elements.Cast;
 import elements.Intro;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
 /**
  * Created by yuta_tsukioka on 2017/04/27.
  */
-public class IntroOut {
+public class IntroFactory {
 
     public List<Intro> getIntro(Stream<Element> tr_info){
         List<Intro> introList = new ArrayList<>();
@@ -28,7 +25,7 @@ public class IntroOut {
                         v -> {
                             Elements th = v.select("th");
                             Elements td = v.select("td");
-                            String shaped_td = new ShapeElements().getElements(th,td);
+                            String shaped_td = new ElementsFactory().getElements(th,td);
                             Intro intro = new Intro(th.text(),shaped_td);
                             introList.add(intro);
                         }
